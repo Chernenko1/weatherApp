@@ -12,9 +12,12 @@ const forecastSlice = createSlice({
     setDayForecast(state, action) {
       state.dayForecast = action.payload.forecast;
     },
+    setWeekForecast(state, action) {
+      state.weekForecast = action.payload.forecast;
+    },
   },
 });
 
-export const {setDayForecast} = forecastSlice.actions;
+export const {setDayForecast, setWeekForecast} = forecastSlice.actions;
 
 export default forecastSlice.reducer;
