@@ -1,15 +1,19 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import {Text, Button} from 'react-native-paper';
 import {Weather} from '../components/Homecomponents/Weather';
-import {GetWeather} from '../components/getWeather';
-import {GetLocation} from '../components/getLocation';
+import {useGetLocation} from '../components/getLocation';
+import {useGetWeather} from '../components/getWeather';
 
 export const HomeScreen = () => {
+  const {getLocation} = useGetLocation();
+  const {getDayForecast} = useGetWeather();
+  useEffect(() => {
+    getLocation();
+    getDayForecast();
+  }, []);
   return (
     <View style={styles.container}>
-      <GetLocation />
-      <GetWeather />
       <View style={styles.weather_container}>
         <Weather />
       </View>

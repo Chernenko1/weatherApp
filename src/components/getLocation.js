@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {View, PermissionsAndroid} from 'react-native';
-import {Text, Button} from 'react-native-paper';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import Geolocation from '@react-native-community/geolocation';
 import {setCoords} from '../redux/locationSlice';
 
@@ -30,13 +29,10 @@ const requestLocationPermission = async () => {
   }
 };
 
-export const GetLocation = () => {
+export const useGetLocation = () => {
   const [location, setLocation] = useState(false);
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
 
   const dispatch = useDispatch();
-  const data = useSelector(state => state.location);
 
   const getLocation = () => {
     const result = requestLocationPermission();
@@ -55,9 +51,9 @@ export const GetLocation = () => {
             console.log(1, error.code, error.message);
             setLocation(false);
           },
-          // {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
         );
       }
     });
   };
+  return {getLocation};
 };

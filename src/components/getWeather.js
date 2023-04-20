@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {View} from 'react-native';
 import {setDayForecast} from '../redux/forecastSlice';
 
 const API_KEY = '4cf0d9fffdc9bad1d776be982e553ff5';
 
-export const GetWeather = () => {
-  const [forecast, setForecast] = useState(null);
-
+export const useGetWeather = () => {
   const data = useSelector(state => state.location);
   const dispatch = useDispatch();
 
@@ -31,6 +29,5 @@ export const GetWeather = () => {
     }
   };
 
-  getDayForecast();
-  return <View></View>;
+  return {getDayForecast};
 };
