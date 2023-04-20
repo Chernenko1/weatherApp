@@ -1,18 +1,22 @@
 import React, {useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {View} from 'react-native';
+import {setDayForecast} from '../redux/forecastSlice';
 
 const API_KEY = '4cf0d9fffdc9bad1d776be982e553ff5';
 
-export const Weather = () => {
-  // const [date, setDate] = useState(null);
+export const GetWeather = () => {
+  const [forecast, setForecast] = useState(null);
 
-  const date = useSelector(state => state.location);
+  const data = useSelector(state => state.location);
+  const dispatch = useDispatch();
+
+  // console.log(data);
 
   const getDayForecast = async () => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${date.latitude}61&lon=${date.longitude}&appid=${API_KEY}`,
+        `https://api.openweathermap.org/data/2.5/weather?lat=${data.latitude}61&lon=${data.longitude}&appid=${API_KEY}`,
       );
 
       if (!response.ok) {
@@ -20,7 +24,8 @@ export const Weather = () => {
       }
 
       const dayForecast = await response.json();
-      // console.log(dayForecast);
+
+      dispatch(setDayForecast({forecast: dayForecast}));
     } catch (error) {
       console.log(error.message);
     }

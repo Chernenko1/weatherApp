@@ -1,5 +1,6 @@
 import React from 'react';
 import {Provider as PaperProvider} from 'react-native-paper';
+import {useEffect} from 'react';
 import {AppNavigator} from './src/navigation';
 import {NavigationContainer} from '@react-navigation/native';
 import {PersistGate} from 'redux-persist/integration/react';

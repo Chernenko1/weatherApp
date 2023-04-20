@@ -60,14 +60,4 @@ export const GetLocation = () => {
       }
     });
   };
-
-  return (
-    <View>
-      <View>
-        <Text>Latitude: {data.latitude} </Text>
-        <Text>Longitude: {data.longitude}</Text>
-      </View>
-      <Button onPress={getLocation}>Получить координаты</Button>
-    </View>
-  );
 };

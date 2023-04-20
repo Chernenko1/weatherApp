@@ -17,7 +17,7 @@ const locationPersistConfig = {
 const forecastPersistConfig = {
   key: 'forecast',
   storage: AsyncStorage,
-  whitelist: ['dayForecast, weekForecast'],
+  whitelist: ['dayForecast', 'weekForecast'],
 };
 
 const locationPersistReducer = persistReducer(

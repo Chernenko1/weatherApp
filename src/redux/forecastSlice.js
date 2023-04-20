@@ -1,14 +1,14 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-  dayForecast: [],
-  weekForecast: [],
+  dayForecast: null,
+  weekForecast: null,
 };
 
 const forecastSlice = createSlice({
   name: 'forecast',
   initialState,
-  reduces: {
+  reducers: {
     setDayForecast(state, action) {
       state.dayForecast = action.payload.forecast;
     },
