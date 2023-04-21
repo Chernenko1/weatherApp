@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     marginTop: 20,
     alignItems: 'center',
-    marginLeft: len <= 2 && len != 0 ? 70 : len == 0 ? 150 : 0,
+    marginLeft: len <= 2 && len != 0 ? 70 : len == 0 ? 155 : 0,
     marginHorizontal: 5,
     marginBottom: 5,
   },

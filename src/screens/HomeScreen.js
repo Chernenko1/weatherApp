@@ -45,22 +45,22 @@ const styles = StyleSheet.create({
   },
   weather_container: {
     flex: 4,
-    backgroundColor: '#B9F3FC',
+    // backgroundColor: '#B9F3FC',
   },
   weather_info_container: {
     flex: 1,
-    backgroundColor: '#AEE2FF',
+    // backgroundColor: '#AEE2FF',
   },
   day_length_container: {
     flex: 2,
-    backgroundColor: '#93C6E7',
+    // backgroundColor: '#93C6E7',
   },
   weather_time_container: {
     flex: 2,
-    backgroundColor: '#FEDEFF',
+    // backgroundColor: '#FEDEFF',
   },
   week_weather_container: {
     flex: 3,
-    backgroundColor: '#B9F3FC',
+    // backgroundColor: '#B9F3FC',
   },
 });
