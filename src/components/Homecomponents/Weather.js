@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Image, Dimensions} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
+import {weatherOption} from '../../data/weatherInfo';
 
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
@@ -20,7 +21,7 @@ export const Weather = () => {
         <Image
           style={styles.image}
           source={{
-            uri: 'https://cdn-icons-png.flaticon.com/512/2584/2584011.png',
+            uri: weatherOption[data.weather[0].main].iconName,
           }}
         />
       </View>
