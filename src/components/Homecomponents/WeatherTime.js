@@ -5,7 +5,6 @@ import {useSelector} from 'react-redux';
 import {weatherOption} from '../../data/weatherInfo';
 
 let len = 0;
-console.log(len);
 
 export const WeatherTimes = () => {
   const date = new Date().toISOString().substring(0, 10);
