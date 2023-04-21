@@ -7,6 +7,7 @@ import {useGetWeather} from '../components/getWeather';
 import {WeatherInfo} from '../components/Homecomponents/WeatherInfo';
 import {WeatherTimes} from '../components/Homecomponents/WeatherTime';
 import {useGetWeekWeather} from '../components/getWeekWeather';
+import {WeatherWeek} from '../components/Homecomponents/WeatherWeek';
 
 export const HomeScreen = () => {
   const {getLocation} = useGetLocation();
@@ -27,10 +28,13 @@ export const HomeScreen = () => {
         <WeatherInfo />
       </View>
       <View style={styles.day_length_container}></View>
+      <Text style={{fontSize: 16, marginLeft: 15, color: 'gray'}}>Today</Text>
       <View style={styles.weather_time_container}>
         <WeatherTimes />
       </View>
-      <View style={styles.week_weather_container}></View>
+      <View style={styles.week_weather_container}>
+        <WeatherWeek />
+      </View>
     </View>
   );
 };
