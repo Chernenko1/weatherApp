@@ -4,14 +4,12 @@ import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {weatherOption} from '../../data/weatherInfo';
 
-let len = 0;
-
 export const WeatherTimes = () => {
   const date = new Date().toISOString().substring(0, 10);
   const data = useSelector(state => state.forecast.weekForecast.list);
 
   const weatherDayInfo = data.filter(dat => dat.dt_txt.includes(date));
-  len = weatherDayInfo.length;
+
   return (
     <View>
       <FlatList
@@ -45,7 +43,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     marginTop: 20,
     alignItems: 'center',
-    marginLeft: len <= 2 && len != 0 ? 70 : len == 0 ? 155 : 0,
+    marginLeft: 35,
     marginHorizontal: 5,
     marginBottom: 5,
   },
