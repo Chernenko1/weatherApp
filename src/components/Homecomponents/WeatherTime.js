@@ -15,7 +15,7 @@ export const WeatherTimes = () => {
 
   const weatherDayInfo =
     data !== false
-      ? data.filter(date => date.dt_txt.includes('15:00:00'))
+      ? data.filter(dat => dat.dt_txt.includes(date))
       : console.log('ghgh');
 
   if (data == false) return <View></View>;
