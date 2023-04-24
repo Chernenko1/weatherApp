@@ -16,7 +16,7 @@ export const Weather = () => {
       <View style={styles.info}>
         <Text style={{fontSize: 24}}>{data.name}</Text>
         <Text style={{fontSize: 72}}>{Math.floor(data.main.temp - 273)}°</Text>
-        <Text style={{fontSize: 20}}>{data.weather[0].main}</Text>
+        <Text style={styles.weather_text}>{data.weather[0].main}</Text>
       </View>
       <View style={styles.image_container}>
         <Image
@@ -47,5 +47,13 @@ const styles = StyleSheet.create({
   info: {
     marginLeft: 30,
     marginTop: 30,
+  },
+  weather_text: {
+    fontSize: 24,
+    alignSelf: 'flex-start',
+    paddingHorizontal: 10,
+    paddingVertical: 2,
+    backgroundColor: 'rgba(189, 181, 181, 0.15)',
+    borderRadius: 20,
   },
 });

@@ -26,7 +26,9 @@ const Tab = createMaterialBottomTabNavigator();
 
 export const AppNavigator = () => {
   return (
-    <Tab.Navigator screenOptions={{headerShown: false}}>
+    <Tab.Navigator
+      barStyle={{backgroundColor: 'rgba(232, 230, 230, 0.25)'}}
+      screenOptions={{headerShown: false}}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}

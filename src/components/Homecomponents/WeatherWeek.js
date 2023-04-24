@@ -25,7 +25,7 @@ export const WeatherWeek = () => {
   if (data == false) return <View></View>;
 
   return (
-    <View>
+    <View style={{marginTop: 12}}>
       <FlatList
         data={weatherDayInfo}
         keyExtractor={item => item.dt_txt}
