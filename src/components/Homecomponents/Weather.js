@@ -5,10 +5,11 @@ import {useSelector} from 'react-redux';
 import {weatherOption} from '../../data/weatherInfo';
 
 const width = Dimensions.get('screen').width;
-const height = Dimensions.get('screen').height;
 
 export const Weather = () => {
   const data = useSelector(state => state.forecast.dayForecast);
+
+  if (data == null) return <View></View>;
 
   return (
     <View style={styles.container}>

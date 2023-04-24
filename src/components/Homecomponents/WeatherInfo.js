@@ -6,6 +6,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export const WeatherInfo = () => {
   const data = useSelector(state => state.forecast.dayForecast);
+  if (data == null) return <View></View>;
+
   return (
     <View style={styles.container}>
       <View style={styles.info_container}>

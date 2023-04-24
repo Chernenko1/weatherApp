@@ -1,14 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Image, Dimensions, FlatList} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {weatherOption} from '../../data/weatherInfo';
 
 export const WeatherTimes = () => {
+  // const [weatherDayInfo, setWeatherDayInfo] = useState();
   const date = new Date().toISOString().substring(0, 10);
-  const data = useSelector(state => state.forecast.weekForecast.list);
 
-  const weatherDayInfo = data.filter(dat => dat.dt_txt.includes(date));
+  const data = useSelector(
+    state =>
+      state.forecast.weekForecast != null && state.forecast.weekForecast.list,
+  );
+
+  const weatherDayInfo =
+    data !== false
+      ? data.filter(date => date.dt_txt.includes('15:00:00'))
+      : console.log('ghgh');
+
+  if (data == false) return <View></View>;
 
   return (
     <View>

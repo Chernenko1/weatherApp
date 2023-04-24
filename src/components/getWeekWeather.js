@@ -5,6 +5,8 @@ import {setWeekForecast} from '../redux/forecastSlice';
 
 const API_KEY = '4cf0d9fffdc9bad1d776be982e553ff5';
 
+console.log(2);
+
 export const useGetWeekWeather = () => {
   const data = useSelector(state => state.location);
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Image, Dimensions, FlatList} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
@@ -8,8 +8,21 @@ import {daysName} from '../../data/days';
 const width = Dimensions.get('screen').width;
 
 export const WeatherWeek = () => {
-  const data = useSelector(state => state.forecast.weekForecast.list);
-  const weatherDayInfo = data.filter(date => date.dt_txt.includes('15:00:00'));
+  // const [weatherDayInfo, setWeatherDayInfo] = useState();
+  const data = useSelector(
+    state =>
+      state.forecast.weekForecast != null && state.forecast.weekForecast.list,
+  );
+
+  const weatherDayInfo =
+    data !== false
+      ? data.filter(date => date.dt_txt.includes('15:00:00'))
+      : console.log('ghgh');
+
+  // if (data !== false)
+  //   setWeatherDayInfo(data.filter(date => date.dt_txt.includes('15:00:00')));
+
+  if (data == false) return <View></View>;
 
   return (
     <View>

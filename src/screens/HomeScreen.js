@@ -19,7 +19,8 @@ export const HomeScreen = () => {
     getLocation();
     getDayForecast();
     getWeekForecast();
-  }, []);
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.weather_container}>
