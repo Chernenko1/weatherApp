@@ -1,19 +1,50 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {HomeScreen} from '../screens/HomeScreen';
+import {SettingScreen} from '../screens/SettingScreen';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Stack = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
+
+const Tab = createMaterialBottomTabNavigator();
+
+// const Tabs = () => {
+//   return (
+//     <Tab.Navigator>
+//       <Tab.Screen
+//         name="Home"
+//         component={HomeScreen}
+//         options={{
+//           headerShown: false,
+//         }}
+//       />
+//       <Tab.Screen name="Settings" component={SettingScreen} />
+//     </Tab.Navigator>
+//   );
+// };
 
 export const AppNavigator = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
+    <Tab.Navigator screenOptions={{headerShown: false}}>
+      <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          headerShown: false,
+          tabBarIcon: ({color, size}) => {
+            return <Icon name="home" size={size} color={color} />;
+          },
         }}
       />
-    </Stack.Navigator>
+      <Tab.Screen
+        name="Settings"
+        component={SettingScreen}
+        options={{
+          tabBarIcon: ({color, size}) => {
+            return <Icon name="cog" size={size} color={color} />;
+          },
+        }}
+      />
+    </Tab.Navigator>
   );
 };
