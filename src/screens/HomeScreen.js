@@ -8,6 +8,7 @@ import {WeatherInfo} from '../components/Homecomponents/WeatherInfo';
 import {WeatherTimes} from '../components/Homecomponents/WeatherTime';
 import {useGetWeekWeather} from '../components/getWeekWeather';
 import {WeatherWeek} from '../components/Homecomponents/WeatherWeek';
+import {WeatherChart} from '../components/Homecomponents/WeatherChart';
 
 export const HomeScreen = () => {
   const {getLocation} = useGetLocation();
@@ -27,7 +28,9 @@ export const HomeScreen = () => {
       <View style={styles.weather_info_container}>
         <WeatherInfo />
       </View>
-      <View style={styles.day_length_container}></View>
+      <View style={styles.day_length_container}>
+        <WeatherChart />
+      </View>
       <Text style={{fontSize: 16, marginLeft: 15, color: 'gray'}}>Today</Text>
       <View style={styles.weather_time_container}>
         <WeatherTimes />
