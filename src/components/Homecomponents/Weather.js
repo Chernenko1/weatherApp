@@ -11,6 +11,8 @@ export const Weather = () => {
 
   if (data == null) return <View></View>;
 
+  console.log(data.weather[0].main);
+
   return (
     <View style={styles.container}>
       <View style={styles.info}>
