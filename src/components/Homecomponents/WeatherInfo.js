@@ -12,17 +12,17 @@ export const WeatherInfo = () => {
     <View style={styles.container}>
       <View style={styles.info_container}>
         <View style={styles.info_blocks}>
-          <Icon name="water" size={24} />
+          <Icon name="water-outline" size={24} />
           <Text style={styles.text}>{data.main.humidity}%</Text>
         </View>
         <View style={styles.info_blocks}>
-          <Icon name="water" size={24} />
+          <Icon name="clock-time-twelve-outline" size={24} />
           <Text style={styles.text}>
             {Math.floor(data.main.pressure * 0.75)}mmHg
           </Text>
         </View>
         <View style={styles.info_blocks}>
-          <Icon name="water" size={24} />
+          <Icon name="weather-windy" size={24} />
           <Text style={styles.text}>{data.wind.speed}m/s</Text>
         </View>
       </View>

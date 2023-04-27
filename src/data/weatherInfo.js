@@ -19,6 +19,10 @@ export const weatherOption = {
     iconName: 'https://cdn-icons-png.flaticon.com/512/2584/2584077.png',
     ru: 'Туман',
   },
+  Haze: {
+    iconName: 'https://cdn-icons-png.flaticon.com/512/2584/2584077.png',
+    ru: 'Туман',
+  },
   Clear: {
     iconName: 'https://cdn-icons-png.flaticon.com/512/2584/2584042.png',
     ru: 'Ясно',

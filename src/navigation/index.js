@@ -4,25 +4,23 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import {HomeScreen} from '../screens/HomeScreen';
 import {SettingScreen} from '../screens/SettingScreen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {FavouriteScreen} from '../screens/FavouriteScreen';
 
-// const Stack = createNativeStackNavigator();
+const FavouritesStack = createNativeStackNavigator();
+
+const FavouritesStackScreen = () => {
+  return (
+    <FavouritesStack.Navigator>
+      <FavouritesStack.Screen
+        name="SFavourites"
+        component={FavouriteScreen}
+        options={{headerShown: false}}
+      />
+    </FavouritesStack.Navigator>
+  );
+};
 
 const Tab = createMaterialBottomTabNavigator();
-
-// const Tabs = () => {
-//   return (
-//     <Tab.Navigator>
-//       <Tab.Screen
-//         name="Home"
-//         component={HomeScreen}
-//         options={{
-//           headerShown: false,
-//         }}
-//       />
-//       <Tab.Screen name="Settings" component={SettingScreen} />
-//     </Tab.Navigator>
-//   );
-// };
 
 export const AppNavigator = () => {
   return (
@@ -33,8 +31,29 @@ export const AppNavigator = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({color, size}) => {
-            return <Icon name="home" size={size} color={color} />;
+          tabBarIcon: ({color, focused}) => {
+            return (
+              <Icon
+                name="home-outline"
+                size={20}
+                color={!!focused ? color : 'gray'}
+              />
+            );
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Favourites"
+        component={FavouritesStackScreen}
+        options={{
+          tabBarIcon: ({color, focused}) => {
+            return (
+              <Icon
+                name="heart-outline"
+                size={20}
+                color={!!focused ? color : 'gray'}
+              />
+            );
           },
         }}
       />
@@ -42,8 +61,14 @@ export const AppNavigator = () => {
         name="Settings"
         component={SettingScreen}
         options={{
-          tabBarIcon: ({color, size}) => {
-            return <Icon name="cog" size={size} color={color} />;
+          tabBarIcon: ({color, focused}) => {
+            return (
+              <Icon
+                name="cog-outline"
+                size={20}
+                color={!!focused ? color : 'gray'}
+              />
+            );
           },
         }}
       />
