@@ -1,5 +1,11 @@
-import React, {useEffect} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  RefreshControl,
+} from 'react-native';
 import {Text, Button} from 'react-native-paper';
 import {Weather} from '../components/Homecomponents/Weather';
 import {useGetLocation} from '../components/getLocation';
@@ -11,35 +17,47 @@ import {WeatherWeek} from '../components/Homecomponents/WeatherWeek';
 import {WeatherChart} from '../components/Homecomponents/WeatherChart';
 
 export const HomeScreen = () => {
+  const [refreshing, setRefreshing] = useState(false);
+
   const {getLocation} = useGetLocation();
   const {getDayForecast} = useGetWeather();
   const {getWeekForecast} = useGetWeekWeather();
 
-  useEffect(() => {
+  const onRefresh = () => {
+    setRefreshing(true);
     getLocation();
+    setRefreshing(false);
+  };
+
+  useEffect(() => {
     getDayForecast();
     getWeekForecast();
   });
 
   return (
-    <View style={styles.container}>
-      <View style={styles.weather_container}>
-        <Weather />
-      </View>
-      <View style={styles.weather_info_container}>
-        <WeatherInfo />
-      </View>
-      <View style={styles.day_length_container}>
-        <WeatherChart />
-      </View>
-      <Text style={{fontSize: 16, marginLeft: 15, color: 'gray'}}>Today</Text>
-      <View style={styles.weather_time_container}>
-        <WeatherTimes />
-      </View>
-      <View style={styles.week_weather_container}>
-        <WeatherWeek />
-      </View>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
+        <View style={styles.weather_container}>
+          <Weather />
+        </View>
+        <View style={styles.weather_info_container}>
+          <WeatherInfo />
+        </View>
+        <View style={styles.day_length_container}>
+          <WeatherChart />
+        </View>
+        <Text style={{fontSize: 16, marginLeft: 15, color: 'gray'}}>Today</Text>
+        <View style={styles.weather_time_container}>
+          <WeatherTimes />
+        </View>
+        <View style={styles.week_weather_container}>
+          <WeatherWeek />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
