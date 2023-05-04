@@ -26,51 +26,45 @@ export const WeatherWeek = () => {
 
   return (
     <View style={{marginTop: 12}}>
-      <FlatList
-        data={weatherDayInfo}
-        keyExtractor={item => item.dt_txt}
-        renderItem={({item}) => (
-          <View style={styles.container}>
-            <View style={styles.day}>
-              <Text style={styles.text}>
-                {
-                  daysName[
-                    new Date(
-                      item.dt_txt.split(' ')[0].substring(0, 10),
-                    ).getDay()
-                  ]
-                }
-              </Text>
-            </View>
-            <View style={styles.image_container}>
-              <Image
-                style={styles.image}
-                source={{uri: weatherOption[item.weather[0].main].iconName}}
-              />
-            </View>
-
-            <View style={styles.weather_info}>
-              <Text
-                style={{
-                  ...styles.text,
-                  fontSize: 15,
-                  marginBottom: 7,
-                }}>
-                {weatherOption[item.weather[0].main].ru}
-              </Text>
-            </View>
-
-            <View style={styles.weather_deg}>
-              <Text style={{...styles.text, fontSize: 15, marginLeft: 15}}>
-                {item.main.temp > 273
-                  ? `+${Math.floor(item.main.temp - 273)}`
-                  : Math.floor(item.main.temp - 273)}
-                °
-              </Text>
-            </View>
+      {weatherDayInfo.map((item, index) => (
+        <View style={styles.container}>
+          <View style={styles.day}>
+            <Text style={styles.text}>
+              {
+                daysName[
+                  new Date(item.dt_txt.split(' ')[0].substring(0, 10)).getDay()
+                ]
+              }
+            </Text>
           </View>
-        )}
-      />
+          <View style={styles.image_container}>
+            <Image
+              style={styles.image}
+              source={{uri: weatherOption[item.weather[0].main].iconName}}
+            />
+          </View>
+
+          <View style={styles.weather_info}>
+            <Text
+              style={{
+                ...styles.text,
+                fontSize: 15,
+                marginBottom: 7,
+              }}>
+              {weatherOption[item.weather[0].main].ru}
+            </Text>
+          </View>
+
+          <View style={styles.weather_deg}>
+            <Text style={{...styles.text, fontSize: 15, marginLeft: 15}}>
+              {item.main.temp > 273
+                ? `+${Math.floor(item.main.temp - 273)}`
+                : Math.floor(item.main.temp - 273)}
+              °
+            </Text>
+          </View>
+        </View>
+      ))}
     </View>
   );
 };

@@ -5,6 +5,7 @@ import {HomeScreen} from '../screens/HomeScreen';
 import {SettingScreen} from '../screens/SettingScreen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {FavouriteScreen} from '../screens/FavouriteScreen';
+import {SearchScreen} from '../screens/SearchScreen';
 
 const FavouritesStack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ const FavouritesStackScreen = () => {
         component={FavouriteScreen}
         options={{headerShown: false}}
       />
+      <FavouritesStack.Screen name="Search" component={SearchScreen} />
     </FavouritesStack.Navigator>
   );
 };
