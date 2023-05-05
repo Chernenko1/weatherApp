@@ -65,24 +65,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  weather_container: {
-    flex: 4,
-    // backgroundColor: '#B9F3FC',
-  },
+  weather_container: {},
   weather_info_container: {
-    flex: 1,
-    // backgroundColor: '#AEE2FF',
+    marginTop: 5,
+    marginBottom: 10,
+    paddingVertical: 10,
   },
   day_length_container: {
-    flex: 2,
-    // backgroundColor: '#93C6E7',
+    marginBottom: 10,
   },
-  weather_time_container: {
-    flex: 2,
-    // backgroundColor: '#FEDEFF',
-  },
-  week_weather_container: {
-    flex: 3,
-    // backgroundColor: '#B9F3FC',
-  },
+  weather_time_container: {},
+  week_weather_container: {},
 });
