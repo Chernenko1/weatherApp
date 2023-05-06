@@ -7,6 +7,7 @@ import {
 import {persistReducer, persistStore} from 'redux-persist';
 import locationReducer from './locationSlice';
 import forecastReducer from './forecastSlice';
+import favouriteReducer from './favouriteSlice';
 
 const locationPersistConfig = {
   key: 'location',
@@ -20,6 +21,12 @@ const forecastPersistConfig = {
   whitelist: ['dayForecast', 'weekForecast'],
 };
 
+const favouritePersistConfig = {
+  key: 'favourite',
+  storage: AsyncStorage,
+  whitelist: ['favourite'],
+};
+
 const locationPersistReducer = persistReducer(
   locationPersistConfig,
   locationReducer,
@@ -30,9 +37,15 @@ const forecastPersistReducer = persistReducer(
   forecastReducer,
 );
 
+const favouritePersistReducer = persistReducer(
+  favouritePersistConfig,
+  favouriteReducer,
+);
+
 const reducers = combineReducers({
   location: locationPersistReducer,
   forecast: forecastPersistReducer,
+  favourite: favouritePersistReducer,
 });
 
 export const store = configureStore({
