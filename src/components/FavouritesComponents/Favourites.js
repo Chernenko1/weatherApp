@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useSelector} from 'react-redux';
 
 export const Favourite = () => {
-  const data = useSelector(state => state.forecast.dayForecast);
-  console.log(data);
+  const data = useSelector(state => state.favourite.favourites);
+  // console.log(data);
 
   return (
     <View style={styles.container}>

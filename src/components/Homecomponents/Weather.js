@@ -1,22 +1,57 @@
 import React from 'react';
-import {View, StyleSheet, Image, Dimensions} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import {Text} from 'react-native-paper';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {weatherOption} from '../../data/weatherInfo';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {removeFavourite, setFavourites} from '../../redux/favouriteSlice';
+import {useMarked} from '../../hooks/use-marked';
 
 const width = Dimensions.get('screen').width;
 
 export const Weather = () => {
   const data = useSelector(state => state.forecast.dayForecast);
 
-  if (data == null) return <View></View>;
+  const mark = useMarked(data.name);
 
-  console.log(data.weather[0].main);
+  const dispatch = useDispatch();
+
+  const setIsFavourite = () => {
+    mark
+      ? dispatch(removeFavourite({name: data.name}))
+      : dispatch(
+          setFavourites({
+            name: data.name,
+            lat: data.coord.lat,
+            lon: data.coord.lon,
+          }),
+        );
+  };
+
+  if (data == null) return <View></View>;
 
   return (
     <View style={styles.container}>
       <View style={styles.info}>
-        <Text style={{fontSize: 24}}>{data.name}</Text>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Text style={{fontSize: 24, right: 5}}>{data.name}</Text>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => setIsFavourite()}>
+            <Icon
+              name={mark ? 'star' : 'star-outline'}
+              size={22}
+              color="black"
+              style={{top: 1.5}}
+            />
+          </TouchableOpacity>
+        </View>
         <Text style={{fontSize: 72}}>{Math.floor(data.main.temp - 273)}°</Text>
         <Text style={styles.weather_text}>{data.weather[0].main}</Text>
       </View>

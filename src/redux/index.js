@@ -24,7 +24,7 @@ const forecastPersistConfig = {
 const favouritePersistConfig = {
   key: 'favourite',
   storage: AsyncStorage,
-  whitelist: ['favourite'],
+  whitelist: ['favourites'],
 };
 
 const locationPersistReducer = persistReducer(
