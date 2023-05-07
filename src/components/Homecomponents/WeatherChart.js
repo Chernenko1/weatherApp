@@ -53,7 +53,7 @@ export const WeatherChart = () => {
         <Path
           d={`M 0,40 L 80,45 L 300,80 C 320,90 400,80 400,90 L ${width},40`}
           fill="none"
-          stroke="green"
+          stroke="#FFDEB4"
           strokeWidth="1"
         />
       </Svg>
