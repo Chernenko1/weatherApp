@@ -20,7 +20,7 @@ export const useGetSearchLocation = ({query}) => {
     },
     body: JSON.stringify({
       query: query,
-      locations: [{country: 'Беларусь'}],
+      locations: [{country: '*'}],
     }),
   };
 
