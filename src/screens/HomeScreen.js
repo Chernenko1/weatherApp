@@ -49,7 +49,15 @@ export const HomeScreen = () => {
         <View style={styles.day_length_container}>
           <WeatherChart />
         </View>
-        <Text style={{fontSize: 16, marginLeft: 15, color: 'gray'}}>Today</Text>
+        <Text
+          style={{
+            fontSize: 16,
+            marginLeft: 15,
+            color: 'gray',
+            fontFamily: 'Rubik-Light',
+          }}>
+          Today
+        </Text>
         <View style={styles.weather_time_container}>
           <WeatherTimes />
         </View>
@@ -67,8 +75,8 @@ const styles = StyleSheet.create({
   },
   weather_container: {},
   weather_info_container: {
-    marginTop: 5,
-    marginBottom: 10,
+    marginTop: 10,
+    marginBottom: 5,
     paddingVertical: 10,
   },
   day_length_container: {

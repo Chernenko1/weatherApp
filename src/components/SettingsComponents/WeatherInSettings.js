@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
   },
   weather_text: {
     fontSize: 22,
+    fontFamily: 'Lato-Regular',
     marginLeft: 45,
     alignSelf: 'flex-start',
     paddingHorizontal: 10,
@@ -46,5 +47,6 @@ const styles = StyleSheet.create({
   temp_text: {
     fontSize: 72,
     marginLeft: 40,
+    fontFamily: 'Lato-Regular',
   },
 });

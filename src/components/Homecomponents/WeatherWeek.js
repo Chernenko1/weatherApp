@@ -72,13 +72,11 @@ export const WeatherWeek = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    // justifyContent: 'space-between',
-    // alignItems: 'center',
     marginVertical: 10,
   },
   text: {
     color: 'black',
-    // fontFamily: "Rubik-Light",
+    fontFamily: 'Lato-Regular',
     fontSize: 20,
   },
   image: {
@@ -88,8 +86,6 @@ const styles = StyleSheet.create({
   },
   image_container: {
     left: width * 0.48,
-
-    // justifyContent: 'flex-start',
   },
   day: {
     position: 'absolute',

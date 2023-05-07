@@ -55,7 +55,7 @@ export const Favourite = () => {
             onPress={() => setLocation(item.lat, item.lon)}>
             <View style={styles.favourite_blocks}>
               <View style={{flexDirection: 'row'}}>
-                <Text style={{fontSize: 50}}>
+                <Text style={{...styles.text, fontSize: 50}}>
                   {Math.floor(item.temp - 273)}°
                 </Text>
                 <Image
@@ -66,8 +66,12 @@ export const Favourite = () => {
                 />
               </View>
               <View style={{marginVertical: 10}}>
-                <Text style={{left: 2, marginBottom: 4}}>{item.name}</Text>
-                <Text style={{left: 2, color: 'gray'}}>{item.country}</Text>
+                <Text style={{...styles.text, left: 2, marginBottom: 4}}>
+                  {item.name}
+                </Text>
+                <Text style={{...styles.text, left: 2, color: 'gray'}}>
+                  {item.country}
+                </Text>
               </View>
               <View style={styles.info_container}>
                 <View style={styles.info_blocks}>
@@ -94,10 +98,10 @@ const styles = StyleSheet.create({
   },
   favourite_blocks: {
     width: 180,
-    height: 190,
+    height: 170,
     backgroundColor: 'white',
     paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingTop: 15,
     borderRadius: 10,
     marginHorizontal: 5,
     marginBottom: 15,
@@ -116,5 +120,8 @@ const styles = StyleSheet.create({
     transform: [{scaleX: -1}],
     position: 'absolute',
     left: 95,
+  },
+  text: {
+    fontFamily: 'Lato-Regular',
   },
 });
