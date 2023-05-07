@@ -1,58 +1,68 @@
 import React from 'react';
 import {View, StyleSheet, Image, Dimensions} from 'react-native';
 import {Text} from 'react-native-paper';
-import {LineChart} from 'react-native-chart-kit';
+import Svg, {Path} from 'react-native-svg';
+import {useSelector} from 'react-redux';
+
+const width = Dimensions.get('screen').width;
 
 export const WeatherChart = () => {
+  const data = useSelector(state => state.forecast.dayForecast);
+  const startDay = data.sys.sunrise;
+  const endDay = data.sys.sunset;
+
+  const setTime = t => {
+    const unixTime = t;
+    const date = new Date(unixTime * 1000); // конвертировать в миллисекунды
+    const hours = date.getHours().toString().padStart(2, '0'); // получить часы и дополнить нулями
+    const minutes = date.getMinutes().toString().padStart(2, '0'); // получить минуты и дополнить нулями
+    return `${hours}:${minutes}`; // склеить часы и минуты в формат HH:MM
+  };
+
   return (
     <View>
-      <LineChart
-        data={{
-          labels: ['January', '', ''],
-          datasets: [
-            {
-              data: [100, 90, 50, 25, 10],
-            },
-          ],
-        }}
-        width={Dimensions.get('screen').width} // from react-native
-        height={100}
-        // yAxisLabel="$"
-        // yAxisSuffix="k"
-        yAxisInterval={1} // optional, defaults to 1
-        withVerticalLines={false}
-        withHorizontalLines={false}
-        withVerticalLabels={false}
-        withHorizontalLabels={false}
-        segments={2}
-        chartConfig={{
-          backgroundColor: '#white',
-          backgroundGradientFrom: 'white',
-          backgroundGradientTo: 'white',
-          decimalPlaces: 0, // optional, defaults to 2dp
-          color: (opacity = 1) => `rgba(60, 255, 60, ${opacity})`,
-          style: {
-            borderRadius: 16,
-          },
-          propsForDots: {
-            r: '0',
-            // strokeWidth: '2',
-            // stroke: 'white',
-          },
-        }}
-        horizontalLabelRotation={20}
-        bezier
-        style={{
-          // marginVertical: 8,
-          marginLeft: 13,
-          marginRight: 25,
-          borderRadius: 16,
-        }}
-      />
+      <View style={{flexDirection: 'row'}}>
+        <Image
+          source={{
+            uri: 'https://cdn-icons-png.flaticon.com/512/2584/2584042.png',
+          }}
+          style={{
+            ...styles.image,
+            left: 29,
+            top: 10,
+          }}
+        />
+        <Image
+          source={{
+            uri: 'https://cdn-icons-png.flaticon.com/512/2584/2584004.png',
+          }}
+          style={{
+            ...styles.image,
+            left: width - 80,
+            top: 45,
+          }}
+        />
+        <Text style={{...styles.text, left: 60, top: 15}}>
+          {setTime(startDay)}
+        </Text>
+        <Text style={{...styles.text, left: width - 50, top: 50}}>
+          {setTime(endDay)}
+        </Text>
+      </View>
+      <Svg height="90" width={width}>
+        <Path
+          d={`M 0,40 L 80,45 L 300,80 C 320,90 400,80 400,90 L ${width},40`}
+          fill="none"
+          stroke="#FFDEB4"
+          strokeWidth="1"
+        />
+      </Svg>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {},
+  text: {position: 'absolute', fontFamily: 'Lato-Bold'},
+  image: {width: 25, height: 25, position: 'absolute'},
 });
