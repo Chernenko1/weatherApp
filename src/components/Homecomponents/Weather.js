@@ -6,7 +6,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import {Text} from 'react-native-paper';
+import {Text, ActivityIndicator} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import {weatherOption} from '../../data/weatherInfo';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -39,7 +39,12 @@ export const Weather = () => {
         );
   };
 
-  if (data == null) return <View></View>;
+  if (data == null)
+    return (
+      <View>
+        <ActivityIndicator animating={true} color="red" />
+      </View>
+    );
 
   return (
     <View style={styles.container}>
