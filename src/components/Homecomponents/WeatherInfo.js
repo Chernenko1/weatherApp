@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   info_container: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginTop: 10,
+    marginTop: 15,
   },
   info_blocks: {
     flexDirection: 'row',
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   text: {
+    fontFamily: 'Lato-Bold',
     fontSize: 15,
     marginLeft: 10,
   },

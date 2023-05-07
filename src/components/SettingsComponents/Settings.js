@@ -44,11 +44,13 @@ const styles = StyleSheet.create({
     marginTop: 15,
     textAlign: 'right',
     fontSize: 15,
+    fontFamily: 'Lato-Regular',
     color: 'gray',
   },
   left_text: {
     textAlign: 'left',
     fontSize: 17,
+    fontFamily: 'Lato-Regular',
     marginTop: 15,
   },
 });

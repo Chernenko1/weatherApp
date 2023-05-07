@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     fontSize: 15,
     color: 'gray',
+    fontFamily: 'Lato-Regular',
   },
   location_container: {
     marginTop: 5,
@@ -45,5 +46,6 @@ const styles = StyleSheet.create({
   },
   location_text: {
     fontSize: 20,
+    fontFamily: 'Lato-Regular',
   },
 });

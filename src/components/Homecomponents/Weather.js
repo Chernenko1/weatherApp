@@ -45,7 +45,9 @@ export const Weather = () => {
     <View style={styles.container}>
       <View style={styles.info}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={{fontSize: 24, right: 5}}>{data.name}</Text>
+          <Text style={{fontSize: 24, left: 3, fontFamily: 'Lato-Regular'}}>
+            {data.name}
+          </Text>
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => setIsFavourite()}>
@@ -53,11 +55,13 @@ export const Weather = () => {
               name={mark ? 'star' : 'star-outline'}
               size={22}
               color="black"
-              style={{top: 1.5}}
+              style={{top: 1.5, left: 8.5}}
             />
           </TouchableOpacity>
         </View>
-        <Text style={{fontSize: 72}}>{Math.floor(data.main.temp - 273)}°</Text>
+        <Text style={{fontSize: 72, fontFamily: 'Lato-Regular'}}>
+          {Math.floor(data.main.temp - 273)}°
+        </Text>
         <Text style={styles.weather_text}>{data.weather[0].main}</Text>
       </View>
       <View style={styles.image_container}>
@@ -92,6 +96,7 @@ const styles = StyleSheet.create({
   },
   weather_text: {
     fontSize: 24,
+    fontFamily: 'Lato-Regular',
     alignSelf: 'flex-start',
     paddingHorizontal: 10,
     paddingVertical: 2,

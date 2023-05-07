@@ -60,11 +60,13 @@ const styles = StyleSheet.create({
   image: {
     height: 35,
     width: 35,
+    left: 5,
     transform: [{scaleX: -1}],
   },
   text: {
     color: 'black',
     fontSize: 20,
+    fontFamily: 'Lato-Regular',
     marginLeft: 10,
   },
 });
