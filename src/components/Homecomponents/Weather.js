@@ -27,9 +27,14 @@ export const Weather = () => {
       ? dispatch(removeFavourite({name: data.name}))
       : dispatch(
           setFavourites({
-            name: data.name,
             lat: data.coord.lat,
             lon: data.coord.lon,
+            name: data.name,
+            temp: data.main.temp,
+            weather: data.weather[0].main,
+            country: data.sys.country,
+            humidity: data.main.humidity,
+            wind_speed: data.wind.speed,
           }),
         );
   };

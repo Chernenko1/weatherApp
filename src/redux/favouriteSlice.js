@@ -12,7 +12,12 @@ const favouriteSlice = createSlice({
       state.favourites.push({
         lat: action.payload.lat,
         lon: action.payload.lon,
+        temp: action.payload.temp,
+        weather: action.payload.weather,
         name: action.payload.name,
+        country: action.payload.country,
+        humidity: action.payload.humidity,
+        wind_speed: action.payload.wind_speed,
       });
     },
     removeFavourite(state, action) {
