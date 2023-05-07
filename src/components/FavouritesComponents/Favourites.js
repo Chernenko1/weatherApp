@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   StyleSheet,
   TouchableOpacity,
   FlatList,
   Image,
+  SafeAreaView,
+  RefreshControl,
 } from 'react-native';
 import {Text} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
@@ -12,12 +14,24 @@ import {useNavigation} from '@react-navigation/native';
 import {weatherOption} from '../../data/weatherInfo';
 import {setCoords} from '../../redux/locationSlice';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useUpdateWeather} from '../updateWeather';
 
 export const Favourite = () => {
+  const [refreshing, setRefreshing] = useState(false);
+
   const data = useSelector(state => state.favourite.favourites);
+  const {updateForecast} = useUpdateWeather();
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  useEffect(() => {
+    updateForecast();
+  }, []);
+
+  const onRefresh = () => {
+    updateForecast();
+  };
 
   const setLocation = (lan, lon) => {
     console.log(lan, lon);
@@ -26,12 +40,15 @@ export const Favourite = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <FlatList
         data={data}
         keyExtractor={(item, index) => index}
         numColumns={2}
         horizontal={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
         renderItem={({item}) => (
           <TouchableOpacity
             activeOpacity={0.7}
@@ -66,7 +83,7 @@ export const Favourite = () => {
           </TouchableOpacity>
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

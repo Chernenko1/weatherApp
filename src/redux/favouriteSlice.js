@@ -25,9 +25,17 @@ const favouriteSlice = createSlice({
         i => i.name !== action.payload.name,
       );
     },
+    updateFavourite(state, action) {
+      const item = state.favourites.find(i => i.name === action.payload.name);
+      item.temp = action.payload.temp;
+      item.weather = action.payload.weather;
+      item.humidity = action.payload.humidity;
+      item.wind_speed = action.payload.wind_speed;
+    },
   },
 });
 
-export const {setFavourites, removeFavourite} = favouriteSlice.actions;
+export const {setFavourites, removeFavourite, updateFavourite} =
+  favouriteSlice.actions;
 
 export default favouriteSlice.reducer;
