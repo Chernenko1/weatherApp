@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Image, Dimensions} from 'react-native';
-import {Text} from 'react-native-paper';
+import {Text, ActivityIndicator} from 'react-native-paper';
 import Svg, {Path} from 'react-native-svg';
 import {useSelector} from 'react-redux';
 
@@ -8,8 +8,12 @@ const width = Dimensions.get('screen').width;
 
 export const WeatherChart = () => {
   const data = useSelector(state => state.forecast.dayForecast);
-  const startDay = data.sys.sunrise;
-  const endDay = data.sys.sunset;
+
+  let startDay = 0;
+  let endDay = 0;
+
+  data !== null ? (startDay = data.sys.sunrise) : null;
+  data !== null ? (endDay = data.sys.sunset) : null;
 
   const setTime = t => {
     const unixTime = t;
@@ -18,6 +22,13 @@ export const WeatherChart = () => {
     const minutes = date.getMinutes().toString().padStart(2, '0'); // получить минуты и дополнить нулями
     return `${hours}:${minutes}`; // склеить часы и минуты в формат HH:MM
   };
+
+  if (data == null)
+    return (
+      <View>
+        <ActivityIndicator animating={true} color="red" />
+      </View>
+    );
 
   return (
     <View>

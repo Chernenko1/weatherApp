@@ -1,12 +1,17 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Text} from 'react-native-paper';
+import {Text, ActivityIndicator} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export const WeatherInfo = () => {
   const data = useSelector(state => state.forecast.dayForecast);
-  if (data == null) return <View></View>;
+  if (data == null)
+    return (
+      <View>
+        <ActivityIndicator animating={true} color="red" />
+      </View>
+    );
 
   return (
     <View style={styles.container}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -18,7 +18,11 @@ const width = Dimensions.get('screen').width;
 export const Weather = () => {
   const data = useSelector(state => state.forecast.dayForecast);
 
-  const mark = useMarked(data.name);
+  let name = data;
+
+  name !== null ? (name = data.name) : (name = 0);
+
+  const mark = useMarked(name);
 
   const dispatch = useDispatch();
 
