@@ -75,9 +75,8 @@ const styles = StyleSheet.create({
   },
   weather_container: {},
   weather_info_container: {
-    marginTop: 10,
-    marginBottom: 5,
-    paddingVertical: 10,
+    marginTop: 20,
+    marginBottom: 15,
   },
   day_length_container: {
     marginBottom: 10,

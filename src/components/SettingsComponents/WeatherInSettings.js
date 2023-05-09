@@ -3,9 +3,11 @@ import {View, StyleSheet, Image} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {weatherOption} from '../../data/weatherInfo';
+import {useTranslation} from 'react-i18next';
 
 export const WeatherOnSettings = () => {
   const data = useSelector(state => state.forecast.dayForecast);
+  const {t} = useTranslation();
 
   return (
     <View style={styles.container}>
@@ -16,7 +18,9 @@ export const WeatherOnSettings = () => {
             uri: weatherOption[data.weather[0].main].iconName,
           }}
         />
-        <Text style={styles.weather_text}>{data.weather[0].main}</Text>
+        <Text style={styles.weather_text}>
+          {t(`weather:${data.weather[0].main}`)}
+        </Text>
         <Text style={styles.temp_text}>
           {Math.floor(data.main.temp - 273)}°
         </Text>
@@ -37,7 +41,7 @@ const styles = StyleSheet.create({
   weather_text: {
     fontSize: 22,
     fontFamily: 'Lato-Regular',
-    marginLeft: 45,
+    marginLeft: 40,
     alignSelf: 'flex-start',
     paddingHorizontal: 10,
     paddingVertical: 2,

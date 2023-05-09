@@ -15,9 +15,11 @@ import {weatherOption} from '../../data/weatherInfo';
 import {setCoords} from '../../redux/locationSlice';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useUpdateWeather} from '../updateWeather';
+import {useTranslation} from 'react-i18next';
 
 export const Favourite = () => {
   const [refreshing, setRefreshing] = useState(false);
+  const {t} = useTranslation();
 
   const data = useSelector(state => state.favourite.favourites);
   const {updateForecast} = useUpdateWeather();
@@ -80,7 +82,10 @@ export const Favourite = () => {
                 </View>
                 <View style={{...styles.info_blocks, left: 35}}>
                   <Icon name="weather-windy" size={24} />
-                  <Text style={styles.text}>{item.wind_speed}m/s</Text>
+                  <Text style={styles.text}>
+                    {item.wind_speed}
+                    {t('info:m/s')}
+                  </Text>
                 </View>
               </View>
             </View>

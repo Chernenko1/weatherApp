@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Image, Dimensions, FlatList} from 'react-native';
-import {Text} from 'react-native-paper';
+import {Text, ActivityIndicator} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {weatherOption} from '../../data/weatherInfo';
 
@@ -16,9 +16,14 @@ export const WeatherTimes = () => {
   const weatherDayInfo =
     data !== false
       ? data.filter(dat => dat.dt_txt.includes(date))
-      : console.log('ghgh');
+      : console.log('Error(WeatherTime)');
 
-  if (data == false) return <View></View>;
+  if (data == false)
+    return (
+      <View>
+        <ActivityIndicator animating={true} color="red" />
+      </View>
+    );
 
   return (
     <View>
