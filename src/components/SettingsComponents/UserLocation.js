@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -7,12 +8,13 @@ import {useSelector} from 'react-redux';
 export const UserLocation = () => {
   const city = useSelector(state => state.forecast.dayForecast.name);
   const country = useSelector(state => state.forecast.dayForecast.sys.country);
+  const {t} = useTranslation();
 
   return (
     <View style={styles.container}>
       <View style={styles.yrln_container}>
         <Icon name="crosshairs-gps" size={20} />
-        <Text style={styles.yrln_text}>Your location Now</Text>
+        <Text style={styles.yrln_text}>{t('settings:YourlocationNow')}</Text>
       </View>
       <View style={styles.location_container}>
         <Text style={styles.location_text}>

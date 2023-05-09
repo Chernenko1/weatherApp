@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {View, StyleSheet, Image, Dimensions, FlatList} from 'react-native';
 import {Text, ActivityIndicator} from 'react-native-paper';
 import {useSelector} from 'react-redux';
+import {useTranslation} from 'react-i18next';
 import {weatherOption} from '../../data/weatherInfo';
-import {daysName} from '../../data/days';
 
 const width = Dimensions.get('screen').width;
 
@@ -13,6 +13,7 @@ export const WeatherWeek = () => {
     state =>
       state.forecast.weekForecast != null && state.forecast.weekForecast.list,
   );
+  const {t} = useTranslation();
 
   const weatherDayInfo =
     data !== false
@@ -34,11 +35,14 @@ export const WeatherWeek = () => {
         <View style={styles.container} key={index}>
           <View style={styles.day}>
             <Text style={styles.text}>
-              {
-                daysName[
-                  new Date(item.dt_txt.split(' ')[0].substring(0, 10)).getDay()
-                ]
-              }
+              {/* {t('days:1')} */}
+              {t(
+                `days:${new Date(
+                  item.dt_txt.split(' ')[0].substring(0, 10),
+                ).getDay()}`,
+              )}
+              {/* `${new Date(item.dt_txt.split(' ')[0].substring(0, 10)).getDay()}
+              `, */}
             </Text>
           </View>
           <View style={styles.image_container}>
@@ -55,7 +59,7 @@ export const WeatherWeek = () => {
                 fontSize: 15,
                 marginBottom: 7,
               }}>
-              {weatherOption[item.weather[0].main].ru}
+              {t(`weather:${item.weather[0].main}`)}
             </Text>
           </View>
 

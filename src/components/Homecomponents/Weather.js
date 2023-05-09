@@ -8,14 +8,16 @@ import {
 } from 'react-native';
 import {Text, ActivityIndicator} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
-import {weatherOption} from '../../data/weatherInfo';
+import {useTranslation} from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {removeFavourite, setFavourites} from '../../redux/favouriteSlice';
 import {useMarked} from '../../hooks/use-marked';
+import {weatherOption} from '../../data/weatherInfo';
 
 const width = Dimensions.get('screen').width;
 
 export const Weather = () => {
+  const {t} = useTranslation();
   const data = useSelector(state => state.forecast.dayForecast);
 
   let name = data;
@@ -71,7 +73,9 @@ export const Weather = () => {
         <Text style={{fontSize: 72, fontFamily: 'Lato-Regular'}}>
           {Math.floor(data.main.temp - 273)}°
         </Text>
-        <Text style={styles.weather_text}>{data.weather[0].main}</Text>
+        <Text style={styles.weather_text}>
+          {t(`weather:${data.weather[0].main}`)}
+        </Text>
       </View>
       <View style={styles.image_container}>
         <Image
