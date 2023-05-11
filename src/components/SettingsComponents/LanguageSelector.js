@@ -19,7 +19,6 @@ export const LanguageSelector = () => {
     const a = await AsyncStorage.getItem('user_language');
     setLang(a);
   };
-  console.log(lang);
   useEffect(() => {
     deviceLang();
   }, []);

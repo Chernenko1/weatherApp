@@ -5,10 +5,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import en from './translations/en';
 import ru from './translations/ru';
+import be from './translations/be';
 
 const LANGUAGES = {
   en,
   ru,
+  be,
 };
 
 const LANGUAGE_DETECTOR = {
