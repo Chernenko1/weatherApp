@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import {initReactI18next} from 'react-i18next';
-import {getLocales} from 'react-native-localize';
+import {findBestLanguageTag, getLocales} from 'react-native-localize';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import en from './translations/en';
 import ru from './translations/ru';
@@ -10,9 +11,20 @@ const LANGUAGES = {
   ru,
 };
 
-i18n.use(initReactI18next).init({
+const LANGUAGE_DETECTOR = {
+  init: Function.prototype,
+  type: 'languageDetector',
+  async: true,
+  detect: async callback => {
+    const userLang = await AsyncStorage.getItem('user_language');
+    const deviceLang = userLang || getLocales()[0].languageCode;
+    callback(deviceLang);
+  },
+  cacheUSerLanguage: () => {},
+};
+
+i18n.use(LANGUAGE_DETECTOR).use(initReactI18next).init({
   compatibilityJSON: 'v3',
-  lng: getLocales()[0].languageCode,
   fallbackLng: 'en',
   resources: LANGUAGES,
 });
