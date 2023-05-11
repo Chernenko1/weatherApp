@@ -3,16 +3,18 @@ import {View, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
+import {useTranslation} from 'react-i18next';
 import {setCoords} from '../../redux/locationSlice';
 
 export const SearchResponse = ({data}) => {
   // const [coords, setCoords] = useState(null);
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   const setLocation = (lan, lon) => {
     dispatch(setCoords({latitude: lan, longitude: lon}));
-    navigation.navigate('Home');
+    navigation.navigate(t('navigate:Home'));
   };
 
   return (
