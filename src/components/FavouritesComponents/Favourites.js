@@ -38,7 +38,7 @@ export const Favourite = () => {
   const setLocation = (lan, lon) => {
     console.log(lan, lon);
     dispatch(setCoords({latitude: lan, longitude: lon}));
-    navigation.navigate('Home');
+    navigation.navigate(t('navigate:Home'));
   };
 
   return (
