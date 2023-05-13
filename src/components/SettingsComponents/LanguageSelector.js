@@ -10,7 +10,7 @@ export const LanguageSelector = () => {
   const LANGUAGES = [
     {language: 'English', code: 'en'},
     {language: 'Русский', code: 'ru'},
-    {language: 'Белорусский', code: 'be'},
+    {language: 'Беларуская', code: 'be'},
   ];
 
   const {t} = useTranslation();

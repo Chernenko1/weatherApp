@@ -1,16 +1,39 @@
 import React from 'react';
-import {View, StyleSheet, Dimensions, Pressable} from 'react-native';
-import {Button, Text} from 'react-native-paper';
-import {useSelector} from 'react-redux';
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
+import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import i18n from 'i18next';
 import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const width = Dimensions.get('window').width;
 
 export const Settings = () => {
   const {t} = useTranslation();
   const navigation = useNavigation();
+
+  const SETTINGS = [
+    {setting: t('settings:Temperature')},
+    {setting: t('settings:WindSpeed')},
+    {setting: t('settings:Source')},
+    {setting: t('settings:Language')},
+    {info: t('info:Celcius'), navigate: null},
+    {info: t('info:m/s'), navigate: null},
+    {info: 'openweathermap.org', navigate: null},
+    {info: t('languages:Language'), navigate: 'Language'},
+  ];
+
+  // const RIGHT_TEXT = [
+  //   {info: t('info:Celcius'), navigate: null},
+  //   {info: t('info:m/s'), navigate: null},
+  //   {info: 'openweathermap.org', navigate: null},
+  //   {info: t('languages:Language'), navigate: 'Language'},
+  // ];
 
   return (
     <View style={styles.container}>
@@ -25,12 +48,12 @@ export const Settings = () => {
           <Text style={styles.right_text}>{t('info:Celcius')}</Text>
           <Text style={styles.right_text}>{t('info:m/s')}</Text>
           <Text style={styles.right_text}>openweathermap.org</Text>
-
-          <Text
-            style={styles.right_text}
+          <TouchableOpacity
+            activeOpacity={0.7}
             onPress={() => navigation.navigate('Language')}>
-            {t('languages:Language')}
-          </Text>
+            <Text style={styles.right_text}>{t('languages:Language')}</Text>
+            {/* <Icon name="chevron-right" /> */}
+          </TouchableOpacity>
         </View>
       </View>
     </View>

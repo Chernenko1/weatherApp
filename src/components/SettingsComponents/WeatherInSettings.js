@@ -18,9 +18,11 @@ export const WeatherOnSettings = () => {
             uri: weatherOption[data.weather[0].main].iconName,
           }}
         />
-        <Text style={styles.weather_text}>
-          {t(`weather:${data.weather[0].main}`)}
-        </Text>
+        <View style={{alignSelf: 'center'}}>
+          <Text style={styles.weather_text}>
+            {t(`weather:${data.weather[0].main}`)}
+          </Text>
+        </View>
         <Text style={styles.temp_text}>
           {Math.floor(data.main.temp - 273)}°
         </Text>
@@ -41,8 +43,6 @@ const styles = StyleSheet.create({
   weather_text: {
     fontSize: 22,
     fontFamily: 'Lato-Regular',
-    marginLeft: 40,
-    alignSelf: 'flex-start',
     paddingHorizontal: 10,
     paddingVertical: 2,
     backgroundColor: 'rgba(189, 181, 181, 0.15)',
