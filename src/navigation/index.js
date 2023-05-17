@@ -10,6 +10,20 @@ import {FavouriteScreen} from '../screens/FavouriteScreen';
 import {SearchScreen} from '../screens/SearchScreen';
 import {LanguageScreen} from '../screens/LanguageScreen';
 
+const HomeStack = createNativeStackNavigator();
+
+const HomeStackScreen = () => {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="SHome"
+        component={HomeScreen}
+        options={{headerShown: false}}
+      />
+    </HomeStack.Navigator>
+  );
+};
+
 const FavouritesStack = createNativeStackNavigator();
 
 const FavouritesStackScreen = () => {
@@ -54,7 +68,7 @@ export const AppNavigator = () => {
       screenOptions={{headerShown: false}}>
       <Tab.Screen
         name={t('navigate:Home')}
-        component={HomeScreen}
+        component={HomeStackScreen}
         options={{
           tabBarIcon: ({color, focused}) => {
             return (
