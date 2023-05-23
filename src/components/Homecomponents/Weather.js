@@ -13,12 +13,14 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {removeFavourite, setFavourites} from '../../redux/favouriteSlice';
 import {useMarked} from '../../hooks/use-marked';
 import {weatherOption} from '../../data/weatherInfo';
+import settings from '../../constants/settings/settings';
 
 const width = Dimensions.get('screen').width;
 
 export const Weather = () => {
   const {t} = useTranslation();
   const data = useSelector(state => state.forecast.dayForecast);
+  const tempType = useSelector(state => state.settings.tempType);
 
   let name = data;
 
@@ -71,7 +73,7 @@ export const Weather = () => {
           </TouchableOpacity>
         </View>
         <Text style={{fontSize: 72, fontFamily: 'Lato-Regular'}}>
-          {Math.floor(data.main.temp - 273)}°
+          {Math.floor(settings[tempType](data.main.temp))}°
         </Text>
         <Text style={styles.weather_text}>
           {t(`weather:${data.weather[0].main}`)}

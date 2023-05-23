@@ -8,7 +8,8 @@ import {HomeScreen} from '../screens/HomeScreen';
 import {SettingScreen} from '../screens/SettingScreen';
 import {FavouriteScreen} from '../screens/FavouriteScreen';
 import {SearchScreen} from '../screens/SearchScreen';
-import {LanguageScreen} from '../screens/LanguageScreen';
+import {LanguageScreen} from '../screens/settings/LanguageScreen';
+import {TemptypeScreen} from '../screens/settings/TemptypeScreen';
 
 const HomeStack = createNativeStackNavigator();
 
@@ -52,6 +53,11 @@ const SettingsStackScreen = () => {
       <SettingsStack.Screen
         name="Language"
         component={LanguageScreen}
+        options={{headerShown: false}}
+      />
+      <SettingsStack.Screen
+        name="Temperature"
+        component={TemptypeScreen}
         options={{headerShown: false}}
       />
     </SettingsStack.Navigator>

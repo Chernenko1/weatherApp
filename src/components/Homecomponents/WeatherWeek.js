@@ -12,6 +12,7 @@ import {useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
 import {weatherOption} from '../../data/weatherInfo';
+import settings from '../../constants/settings/settings';
 
 const width = Dimensions.get('screen').width;
 
@@ -20,6 +21,8 @@ export const WeatherWeek = () => {
     state =>
       state.forecast.weekForecast != null && state.forecast.weekForecast.list,
   );
+  const tempType = useSelector(state => state.settings.tempType);
+
   const {t} = useTranslation();
   const navigation = useNavigation();
 
@@ -69,8 +72,8 @@ export const WeatherWeek = () => {
           <View style={styles.weather_deg}>
             <Text style={{...styles.text, fontSize: 15, marginLeft: 15}}>
               {item.main.temp > 273
-                ? `+${Math.floor(item.main.temp - 273)}`
-                : Math.floor(item.main.temp - 273)}
+                ? `+${settings[tempType](item.main.temp)}`
+                : settings[tempType](item.main.temp)}
               °
             </Text>
           </View>

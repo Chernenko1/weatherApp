@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {LanguageSelector} from '../components/SettingsComponents/LanguageSelector';
+import {LanguageSelector} from '../../components/SettingsComponents/LanguageSelector';
 
 export const LanguageScreen = () => {
   return (

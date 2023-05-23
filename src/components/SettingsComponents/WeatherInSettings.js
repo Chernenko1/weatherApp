@@ -4,9 +4,12 @@ import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {weatherOption} from '../../data/weatherInfo';
 import {useTranslation} from 'react-i18next';
+import settings from '../../constants/settings/settings';
 
 export const WeatherOnSettings = () => {
   const data = useSelector(state => state.forecast.dayForecast);
+  const tempType = useSelector(state => state.settings.tempType);
+
   const {t} = useTranslation();
 
   return (
@@ -24,7 +27,7 @@ export const WeatherOnSettings = () => {
           </Text>
         </View>
         <Text style={styles.temp_text}>
-          {Math.floor(data.main.temp - 273)}°
+          {settings[tempType](data.main.temp)}°
         </Text>
       </View>
     </View>

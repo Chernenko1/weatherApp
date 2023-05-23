@@ -16,12 +16,14 @@ import {setCoords} from '../../redux/locationSlice';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useUpdateWeather} from '../updateWeather';
 import {useTranslation} from 'react-i18next';
+import settings from '../../constants/settings/settings';
 
 export const Favourite = () => {
   const [refreshing, setRefreshing] = useState(false);
   const {t} = useTranslation();
 
   const data = useSelector(state => state.favourite.favourites);
+  const tempType = useSelector(state => state.settings.tempType);
   const {updateForecast} = useUpdateWeather();
 
   const dispatch = useDispatch();
@@ -58,7 +60,7 @@ export const Favourite = () => {
             <View style={styles.favourite_blocks}>
               <View style={{flexDirection: 'row'}}>
                 <Text style={{...styles.text, fontSize: 50}}>
-                  {Math.floor(item.temp - 273)}°
+                  {settings[tempType](item.temp)}°
                 </Text>
                 <Image
                   style={styles.image}

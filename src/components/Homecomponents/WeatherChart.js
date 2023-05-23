@@ -17,10 +17,10 @@ export const WeatherChart = () => {
 
   const setTime = t => {
     const unixTime = t;
-    const date = new Date(unixTime * 1000); // конвертировать в миллисекунды
-    const hours = date.getHours().toString().padStart(2, '0'); // получить часы и дополнить нулями
-    const minutes = date.getMinutes().toString().padStart(2, '0'); // получить минуты и дополнить нулями
-    return `${hours}:${minutes}`; // склеить часы и минуты в формат HH:MM
+    const date = new Date(unixTime * 1000);
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
   };
 
   if (data == null)

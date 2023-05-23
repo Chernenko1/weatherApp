@@ -3,6 +3,7 @@ import {View, StyleSheet, Image, Dimensions, FlatList} from 'react-native';
 import {Text, ActivityIndicator} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {weatherOption} from '../../data/weatherInfo';
+import settings from '../../constants/settings/settings';
 
 export const WeatherTimes = () => {
   // const [weatherDayInfo, setWeatherDayInfo] = useState();
@@ -12,6 +13,7 @@ export const WeatherTimes = () => {
     state =>
       state.forecast.weekForecast != null && state.forecast.weekForecast.list,
   );
+  const tempType = useSelector(state => state.settings.tempType);
 
   const weatherDayInfo =
     data !== false
@@ -43,7 +45,9 @@ export const WeatherTimes = () => {
               style={styles.image}
               source={{uri: weatherOption[item.weather[0].main].iconName}}
             />
-            <Text style={styles.text}>{Math.floor(item.main.temp - 273)}°</Text>
+            <Text style={styles.text}>
+              {settings[tempType](item.main.temp)}°
+            </Text>
           </View>
         )}
         horizontal={true}

@@ -10,30 +10,15 @@ import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useSelector} from 'react-redux';
 
 const width = Dimensions.get('window').width;
 
 export const Settings = () => {
   const {t} = useTranslation();
   const navigation = useNavigation();
-
-  const SETTINGS = [
-    {setting: t('settings:Temperature')},
-    {setting: t('settings:WindSpeed')},
-    {setting: t('settings:Source')},
-    {setting: t('settings:Language')},
-    {info: t('info:Celcius'), navigate: null},
-    {info: t('info:m/s'), navigate: null},
-    {info: 'openweathermap.org', navigate: null},
-    {info: t('languages:Language'), navigate: 'Language'},
-  ];
-
-  // const RIGHT_TEXT = [
-  //   {info: t('info:Celcius'), navigate: null},
-  //   {info: t('info:m/s'), navigate: null},
-  //   {info: 'openweathermap.org', navigate: null},
-  //   {info: t('languages:Language'), navigate: 'Language'},
-  // ];
+  const tempType = useSelector(state => state.settings.tempType);
+  console.log(tempType);
 
   return (
     <View style={styles.container}>
@@ -45,7 +30,11 @@ export const Settings = () => {
           <Text style={styles.left_text}>{t('settings:Language')}</Text>
         </View>
         <View style={styles.right_text_container}>
-          <Text style={styles.right_text}>{t('info:Celcius')}</Text>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('Temperature')}>
+            <Text style={styles.right_text}>{t(`info:${tempType}`)}</Text>
+          </TouchableOpacity>
           <Text style={styles.right_text}>{t('info:m/s')}</Text>
           <Text style={styles.right_text}>openweathermap.org</Text>
           <TouchableOpacity
