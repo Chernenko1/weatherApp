@@ -38,7 +38,7 @@ export const WeatherWeek = () => {
   return (
     <View style={{marginTop: 12}}>
       {weatherDayInfo.map((item, index) => (
-        <View style={styles.container}>
+        <View style={styles.container} key={index}>
           <View style={styles.day}>
             <Text style={styles.text}>
               {t(

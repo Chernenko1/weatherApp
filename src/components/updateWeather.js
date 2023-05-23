@@ -29,7 +29,7 @@ export const useUpdateWeather = () => {
           }),
         );
       } catch (error) {
-        console.log(error.message);
+        console.log(2 + error.message);
       }
     }
   };
